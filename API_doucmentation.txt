@@ -1,0 +1,88 @@
+# API Documentation – File Management Backend
+
+## Base URL
+
+http://localhost:3000/files
+
+---
+
+## 1. Upload File
+
+Upload a file to the server.
+
+**Endpoint**
+POST /files/upload
+
+**Request**
+Form Data:
+
+* file → File to upload
+
+**Response**
+Redirects to:
+GET /files/upload
+
+**Description**
+This endpoint uploads a file to the server using Multer and stores it inside the uploads folder.
+
+---
+
+## 2. View All Files
+
+Get list of all uploaded files.
+
+**Endpoint**
+GET /files/upload
+
+**Response (JSON)**
+[
+{
+"name": "171234567-file.pdf",
+"url": "/uploads/171234567-file.pdf"
+},
+{
+"name": "171234568-image.png",
+"url": "/uploads/171234568-image.png"
+}
+]
+
+**Description**
+Reads the uploads folder and returns all files with name and URL.
+
+---
+
+## 3. Delete File
+
+Delete a file from the server.
+
+**Endpoint**
+DELETE /files/upload/:filename
+
+**Example**
+DELETE /files/upload/171234567-file.pdf
+
+**Response**
+Redirects to:
+GET /files/upload
+
+**Description**
+Deletes the specified file from the uploads folder.
+
+---
+
+## Folder Structure
+
+src/
+controller/
+routes/
+uploads/
+app.js
+server.js
+
+---
+
+## Notes
+
+* Files are stored locally in uploads folder.
+* File names are timestamp-prefixed to avoid duplicates.
+* API currently does not use a database.
